@@ -1,0 +1,41 @@
+<resources>
+    <string name="app_name">Talan</string>
+
+    <string name="title_list">TODO List</string>
+    <string name="title_add">TODO Add</string>
+    <string name="title_edit">Detailed</string>
+    <string name="title_login">Login</string>
+    <string name="title_registration">Registration</string>
+
+    <string name="login_button_text">Log In</string>
+    <string name="save_button_text">Save</string>
+    <string name="change_image_button_text">Change Image</string>
+    <string name="remove_image_button_text">Remove Image</string>
+    <string name="cancel_button_text">Cancel</string>
+
+    <string name="login_hint_text">Login</string>
+    <string name="name_hint_text">Name</string>
+    <string name="password_hint_text">Password</string>
+    <string name="repeat_password_hint_text">Repeat password</string>
+
+    <string name="title_hint_text">Title</string>
+    <string name="description_hint_text">Description</string>
+
+    <string name="logout_menu_text">Logout</string>
+    <string name="attach_image_menu_text">Attach image</string>
+
+    <string name="registration">Registration</string>
+
+
+
+    <string name="success">Success</string>
+    <string name="deleted">Deleted</string>
+    <string name="empty">Empty</string>
+    <string name="login_pass_not_fount">Login/Password not found</string>
+    <string name="wrong_registration_data">Wrong registration data</string>
+    <string name="wrong_login_data">Wrong login data</string>
+    <string name="is_empty">Empty TODO</string>
+
+    <string name="new_tasks">New tasks</string>
+    <string name="done_tasks">Done tasks</string>
+</resources>
