@@ -5,7 +5,7 @@ interface Constants {
     interface Preferences {
         companion object {
             const val GENERAL_PREFERENCES = "general_preferences"
-            const val JWM_TOKEN = "jwm_token"
+            const val USER_NAME = "user_name"
         }
     }
 

@@ -16,7 +16,8 @@ class TodoEntity(
         val description: String,
         val image: String,
         val date: Long = Date().time,
-        val passed: Boolean = false
+        val passed: Boolean = false,
+        val username: String
 ) {
         constructor(todo: Todo): this (
                 todo.id,
@@ -24,6 +25,7 @@ class TodoEntity(
                 todo.description.orEmpty(),
                 todo.image.orEmpty(),
                 todo.date.time,
-                todo.passed
+                todo.passed,
+                todo.username.orEmpty()
         )
 }

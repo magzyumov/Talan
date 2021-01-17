@@ -4,7 +4,7 @@ import android.content.Intent
 import android.content.pm.ActivityInfo
 import android.os.Bundle
 import dagger.android.support.DaggerAppCompatActivity
-import ru.magzyumov.talan.utils.Constants.Preferences.Companion.JWM_TOKEN
+import ru.magzyumov.talan.utils.Constants.Preferences.Companion.USER_NAME
 import ru.magzyumov.talan.utils.PreferenceHelper
 import javax.inject.Inject
 
@@ -25,7 +25,7 @@ class SplashActivity: DaggerAppCompatActivity() {
     }
 
     private fun isAuthorized(): Boolean {
-        return preferenceHelper.getStringPreference(JWM_TOKEN) != null
+        return preferenceHelper.getStringPreference(USER_NAME) != null
     }
 
     private fun openMainActivity(){

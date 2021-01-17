@@ -40,8 +40,8 @@ class AppModule {
     }
 
     @Provides
-    fun providesRepository(todoDao: TodoDao): TodoRepository {
-        return TodoRepository(todoDao)
+    fun providesRepository(todoDao: TodoDao, preferenceHelper: PreferenceHelper): TodoRepository {
+        return TodoRepository(todoDao, preferenceHelper)
     }
 
 

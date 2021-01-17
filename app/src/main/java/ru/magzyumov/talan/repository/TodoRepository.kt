@@ -9,12 +9,15 @@ import ru.magzyumov.talan.data.User
 import ru.magzyumov.talan.database.TodoEntity
 import ru.magzyumov.talan.database.TodoDao
 import ru.magzyumov.talan.database.UserEntity
+import ru.magzyumov.talan.utils.Constants.Preferences.Companion.USER_NAME
+import ru.magzyumov.talan.utils.PreferenceHelper
 import java.util.*
 import javax.inject.Inject
 import kotlin.collections.ArrayList
 
 class TodoRepository @Inject constructor(
-    private val todoDao: TodoDao
+    private val todoDao: TodoDao,
+    private val preferenceHelper: PreferenceHelper
 ) {
 
     fun insert(
@@ -113,7 +116,8 @@ class TodoRepository @Inject constructor(
             onComplete: () -> Unit,
             onError: (String) -> Unit,
     ): Disposable {
-        return todoDao.getTodoByPassed(passsed)
+        val currentUser = preferenceHelper.getStringPreference(USER_NAME).orEmpty()
+        return todoDao.getTodoByPassed(passsed, currentUser)
             .subscribeOn(Schedulers.io())
             .observeOn(Schedulers.computation())
             .map(parseTodoFromDb)
@@ -135,7 +139,8 @@ class TodoRepository @Inject constructor(
                     todo.description,
                     if(todo.image.isEmpty()){null} else {todo.image},
                     Date(todo.date),
-                    todo.passed
+                    todo.passed,
+                    todo.username
                 ))
             }
             result

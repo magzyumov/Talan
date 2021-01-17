@@ -14,6 +14,9 @@
         <action
             android:id="@+id/action_navigation_list_to_addFragment"
             app:destination="@id/navigation_add" />
+        <action
+            android:id="@+id/action_navigation_list_to_loginFragment"
+            app:destination="@id/loginFragment" />
     </fragment>
 
     <fragment
@@ -27,5 +30,10 @@
             app:argType="ru.magzyumov.talan.data.Todo"
             app:nullable="true" />
     </fragment>
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="ru.magzyumov.talan.ui.fragment.LoginFragment"
+        android:label="fragment_login"
+        tools:layout="@layout/fragment_login" />
 
 </navigation>

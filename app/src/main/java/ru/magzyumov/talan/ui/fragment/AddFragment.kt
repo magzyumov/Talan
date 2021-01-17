@@ -4,17 +4,20 @@ package ru.magzyumov.talan.ui.fragment
 import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
-import android.view.*
+import android.util.Log
+import android.view.Menu
+import android.view.MenuInflater
+import android.view.MenuItem
+import android.view.View
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import ru.magzyumov.talan.R
 import ru.magzyumov.talan.data.Todo
 import ru.magzyumov.talan.databinding.FragmentAddBinding
-import ru.magzyumov.talan.ui.activity.AuthActivity
 import ru.magzyumov.talan.ui.base.BaseFragment
 import ru.magzyumov.talan.ui.dialog.ImageDialog
 import ru.magzyumov.talan.ui.viewmodel.AddViewModel
-import ru.magzyumov.talan.utils.Constants.Preferences.Companion.JWM_TOKEN
+import ru.magzyumov.talan.utils.Constants
 import ru.magzyumov.talan.utils.Constants.RequestCode.Companion.REQUEST_ATTACH_IMAGE
 import ru.magzyumov.talan.utils.PreferenceHelper
 import java.util.*
@@ -24,6 +27,9 @@ import javax.inject.Inject
 class AddFragment : BaseFragment(R.layout.fragment_add), ImageDialog.Listener {
     override val binding by viewBinding(FragmentAddBinding::bind)
     override val viewModel by viewModels<AddViewModel> {viewModelProviderFactory}
+
+    @Inject
+    lateinit var preferenceHelper: PreferenceHelper
 
     private var todo: Todo? = null
 
@@ -41,7 +47,7 @@ class AddFragment : BaseFragment(R.layout.fragment_add), ImageDialog.Listener {
     }
 
     private fun observerLiveData() {
-        viewModel.getToaster().observe(viewLifecycleOwner, {toast ->
+        viewModel.getToaster().observe(viewLifecycleOwner, { toast ->
             toast?.let {
                 fragmentInteraction.showToast(it)
             }
@@ -68,15 +74,16 @@ class AddFragment : BaseFragment(R.layout.fragment_add), ImageDialog.Listener {
     }
 
     private fun prepareDataForEditing() {
+        val currentUser = preferenceHelper.getStringPreference(Constants.Preferences.USER_NAME).orEmpty()
         arguments?.let {
             val safeArgs = AddFragmentArgs.fromBundle(it)
-            safeArgs.todo?.let {parcel ->
+            safeArgs.todo?.let { parcel ->
                 todo = parcel
                 binding.etTitle.setText(parcel.title.toString())
                 binding.etDescription.setText(parcel.description.toString())
                 fragmentInteraction.changePageTitle(getString(R.string.title_edit))
             } ?: run {
-                todo = Todo(date = Date())
+                todo = Todo(date = Date(), username = currentUser)
                 fragmentInteraction.changePageTitle(getString(R.string.title_add))
             }
         }
@@ -112,6 +119,7 @@ class AddFragment : BaseFragment(R.layout.fragment_add), ImageDialog.Listener {
     private fun takePhoto() {
         val intent = Intent(Intent.ACTION_GET_CONTENT)
             .setType("image/*")
+            .addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION)
             .addCategory(Intent.CATEGORY_OPENABLE)
         startActivityForResult(intent, REQUEST_ATTACH_IMAGE)
     }
@@ -127,6 +135,7 @@ class AddFragment : BaseFragment(R.layout.fragment_add), ImageDialog.Listener {
             REQUEST_ATTACH_IMAGE -> {
                 data?.let {
                     todo?.apply {
+                        Log.e("SAD",it.data.toString() )
                         this.image = it.data.toString()
                         fragmentInteraction.showToast(getString(R.string.success))
                     }

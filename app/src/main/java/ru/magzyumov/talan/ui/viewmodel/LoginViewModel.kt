@@ -7,7 +7,7 @@ import androidx.lifecycle.ViewModel
 import io.reactivex.disposables.CompositeDisposable
 import ru.magzyumov.talan.data.User
 import ru.magzyumov.talan.repository.TodoRepository
-import ru.magzyumov.talan.utils.Constants.Preferences.Companion.JWM_TOKEN
+import ru.magzyumov.talan.utils.Constants.Preferences.Companion.USER_NAME
 import ru.magzyumov.talan.utils.PreferenceHelper
 import ru.magzyumov.talan.utils.ResourceManager
 import javax.inject.Inject
@@ -34,7 +34,7 @@ class LoginViewModel @Inject constructor(
                         login,
                         password,
                         {
-                            preferenceHelper.setStringPreference(JWM_TOKEN, it.hashCode().toString())
+                            preferenceHelper.setStringPreference(USER_NAME, it.login)
                             onSuccess.invoke()
                         },
                         {

@@ -1,5 +1,6 @@
 package ru.magzyumov.talan.ui.adapter
 
+import android.app.Application
 import android.net.Uri
 import android.view.LayoutInflater
 import android.view.View
@@ -16,7 +17,7 @@ import ru.magzyumov.talan.utils.formatToString
 
 
 class TodoAdapter(
-        todoList: List<Todo>,
+        private val todoList: List<Todo>,
         private val interaction: Interaction? = null
 ) : RecyclerView.Adapter<TodoAdapter.ViewHolder>() {
 

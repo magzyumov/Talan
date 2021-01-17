@@ -20,8 +20,8 @@ interface TodoDao {
     @Delete
     fun deleteTodo(note: TodoEntity): Completable
 
-    @Query("select * from tbl_todo where passed = :passed order by date desc")
-    fun getTodoByPassed(passed: Boolean): Maybe<List<TodoEntity>>
+    @Query("select * from tbl_todo where passed = :passed and username = :username order by date desc")
+    fun getTodoByPassed(passed: Boolean, username: String): Maybe<List<TodoEntity>>
 
 
 

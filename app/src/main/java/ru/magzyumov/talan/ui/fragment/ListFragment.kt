@@ -1,7 +1,7 @@
 package ru.magzyumov.talan.ui.fragment
 
 
-import android.content.Intent
+import android.app.Application
 import android.os.Bundle
 import android.view.*
 import androidx.fragment.app.viewModels
@@ -15,9 +15,8 @@ import ru.magzyumov.talan.databinding.FragmentListBinding
 import ru.magzyumov.talan.ui.activity.AuthActivity
 import ru.magzyumov.talan.ui.adapter.TodoAdapter
 import ru.magzyumov.talan.ui.base.BaseFragment
-import ru.magzyumov.talan.ui.dialog.ImageDialog
 import ru.magzyumov.talan.ui.viewmodel.ListViewModel
-import ru.magzyumov.talan.utils.Constants
+import ru.magzyumov.talan.utils.Constants.Preferences.Companion.USER_NAME
 import ru.magzyumov.talan.utils.PreferenceHelper
 import java.util.*
 import javax.inject.Inject
@@ -106,7 +105,7 @@ class ListFragment : BaseFragment(R.layout.fragment_list), TodoAdapter.Interacti
     }
 
     override fun onPassSelected(passed: Boolean, item: Todo) {
-        viewModel.update(item.apply { this.passed = passed; this.date = Date() })
+        viewModel.update(item.apply { this.passed = passed; this.date = Date()})
     }
 
     private fun initSwipeToDelete(passed: Boolean): ItemTouchHelper.SimpleCallback {
@@ -140,7 +139,7 @@ class ListFragment : BaseFragment(R.layout.fragment_list), TodoAdapter.Interacti
 
         when (item.itemId) {
             R.id.logout -> {
-                preferenceHelper.removeStringPreference(Constants.Preferences.JWM_TOKEN)
+                preferenceHelper.removeStringPreference(USER_NAME)
                 fragmentInteraction.changeActivity(AuthActivity::class.java)
             }
         }

@@ -23,25 +23,20 @@ class MainActivity: BaseActivity() {
 
         setSupportActionBar(toolbar)
 
-        appBarConfiguration = AppBarConfiguration(
-            setOf(R.id.navigation_list, R.id.navigation_add)
-        )
-
         navController = findNavController(R.id.nav_host_fragment_main)
+        appBarConfiguration = AppBarConfiguration(navController.graph)
         setupActionBarWithNavController(navController, appBarConfiguration)
 
-        supportActionBar?.setDisplayHomeAsUpEnabled(true)
-        supportActionBar?.setDisplayShowHomeEnabled(true)
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        super.onOptionsItemSelected(item)
         return when(item.itemId){
             android.R.id.home -> {
                 onBackPressed()
                 true
             }
-            else -> super.onOptionsItemSelected(item)
+            else -> { false }
         }
     }
-
 }

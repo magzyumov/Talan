@@ -12,7 +12,8 @@ data class Todo(
     var description: String? = null,
     var image: String? = null,
     var date: Date = Date(),
-    var passed: Boolean = false
+    var passed: Boolean = false,
+    var username: String? = null
 
 ): Parcelable {
 
