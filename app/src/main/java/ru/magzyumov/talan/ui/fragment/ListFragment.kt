@@ -82,6 +82,7 @@ class ListFragment : BaseFragment(R.layout.fragment_list), TodoAdapter.Interacti
             todoList?.let {
                 allTodo = it
                 todoAdapter.swap(it)
+                binding.recyclerViewTodo.scrollToPosition(0)
             }
         })
 
@@ -89,6 +90,7 @@ class ListFragment : BaseFragment(R.layout.fragment_list), TodoAdapter.Interacti
             todoList?.let {
                 passedTodo = it
                 passedTodoAdapter.swap(it)
+                binding.recyclerViewPassed.scrollToPosition(0)
             }
         })
 
