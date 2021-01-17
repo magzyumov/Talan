@@ -12,12 +12,12 @@
         style="@style/Enter.TextEdit"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
-        android:layout_marginTop="280dp"
+        android:layout_marginBottom="24dp"
         app:endIconMode="clear_text"
         android:hint="@string/login_hint_text"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintBottom_toTopOf="@+id/etPasswordLayout">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/etLogin"
@@ -34,11 +34,11 @@
         app:endIconMode="password_toggle"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginBottom="24dp"
         android:hint="@string/password_hint_text"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etLoginLayout">
+        app:layout_constraintBottom_toTopOf="@+id/btnLogin">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/etPassword"
@@ -54,10 +54,10 @@
         android:id="@+id/btnLogin"
         style="@style/Enter.Button"
         android:text="@string/login_button_text"
-        android:layout_marginTop="24dp"
+        android:layout_marginBottom="255dp"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
-        app:layout_constraintTop_toBottomOf="@+id/etPasswordLayout"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         />
@@ -65,7 +65,7 @@
     <TextView
         android:id="@+id/tvRegistration"
         style="@style/Enter.BottomAction"
-        android:layout_marginBottom="24dp"
+        android:layout_marginBottom="30dp"
         android:text="@string/registration"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
