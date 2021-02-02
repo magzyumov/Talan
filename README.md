@@ -22,7 +22,7 @@
 Приветствуется использование архитектуры ViewBinding, RxJava и базы Room
 Язык: Kotlin
 
-<img src="app/src/main/res/drawable/promo.gif" width="700" >
+<img src="app/src/main/res/drawable/promo.gif" width="500" >
 
 <h4>Architecture</h4>
 <img src="app/src/main/res/drawable/arc.png" width="700" >
