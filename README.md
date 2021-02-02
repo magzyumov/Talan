@@ -25,5 +25,8 @@
 Приветствуется использование архитектуры ViewBinding, RxJava и базы Room
 Язык: Kotlin
 
-По ссылке находится UserFlow
-https://miro.com/app/board/o9J_kxxSL9Y=/?moveToWidget=3074457346616873610
+<img src="app/src/main/res/drawable/promo.gif" width="150" >
+
+<h4>Architecture</h4>
+<img src="app/src/main/res/drawable/arc.png" width="700" >
+
